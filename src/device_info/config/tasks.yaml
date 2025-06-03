@@ -1,11 +1,9 @@
 answer_query:
   description: >
-    Context: "Battery = 23 percent, Memory = 32GB, CPU Type = Intel, Disk Space = 1TB"
-    Use Context to answer the query {query}
-    And only answer whats been asked in query
-    Example:
-    If the query is what is the Memory
-    Answer: 32GB
+    Context is provided via the SystemInfo tool which returns a JSON dict.
+    Use the dict to answer the query: {query}
+    Output ONLY the value corresponding to the query key, exactly as it appears.
+    Example: If the query is what is the Memory and context has {"memory": "32GB"} then Answer: 32GB
   expected_output: >
-    Result should be just the value '16GB'. Dont add context or more info
+    Result should be just the value. Dont add context or more info
   agent: analyst

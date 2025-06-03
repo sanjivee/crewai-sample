@@ -3,10 +3,14 @@ from typing import List
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
+from src.device_info.tools.custom_tool import SystemInfo
 from langchain_openai import ChatOpenAI 
 
 os.environ["OPENAI_API_KEY"] = "NA"
-llm = LLM(model="ollama/llama3.2:latest", base_url="http://localhost:11434")
+llm = LLM(model="ollama/qwen3:8b", 
+        provider="ollama",
+        base_url="http://localhost:11434",
+)
 
 @CrewBase
 class DeviceInfo():
@@ -22,7 +26,7 @@ class DeviceInfo():
         return Agent(
             config=self.agents_config['analyst'],
             verbose=True,
-            tools=[],
+            tools=[SystemInfo()],
             memory=True,
             llm=llm,
             step_callback=lambda step: print(f"Agent Step: {step}"),

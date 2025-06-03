@@ -16,11 +16,12 @@ def run():
     Run the crew.
     """
     inputs = {
-        "query": "what is the CPU?" # intel
+        "query": "what is the battery percent?"
     }
     
     try:
         result = DeviceInfo().crew().kickoff(inputs=inputs)
         print(result, "res")
     except Exception as e:
-        raise Exception(f"An error occurred while running the crew: {e}")
+        import traceback
+        traceback.print_exc()
