@@ -1,0 +1,23 @@
+[project]
+name = "device_info"
+version = "0.1.0"
+description = "device-info using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.121.1,<1.0.0"
+]
+
+[project.scripts]
+device_info = "device_info.main:run"
+run_crew = "device_info.main:run"
+train = "device_info.main:train"
+replay = "device_info.main:replay"
+test = "device_info.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

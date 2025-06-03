@@ -1,0 +1,11 @@
+answer_query:
+  description: >
+    Context: "Battery = 23 percent, Memory = 32GB, CPU Type = Intel, Disk Space = 1TB"
+    Use Context to answer the query {query}
+    And only answer whats been asked in query
+    Example:
+    If the query is what is the Memory
+    Answer: 32GB
+  expected_output: >
+    Result should be just the value '16GB'. Dont add context or more info
+  agent: analyst
