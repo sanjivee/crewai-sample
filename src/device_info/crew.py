@@ -7,9 +7,10 @@ from src.device_info.tools.custom_tool import SystemInfo
 from langchain_openai import ChatOpenAI 
 
 os.environ["OPENAI_API_KEY"] = "NA"
-llm = LLM(model="ollama/qwen3:8b", 
+llm = LLM(model="ollama/mistral:7b", 
         provider="ollama",
         base_url="http://localhost:11434",
+        stream=False,
 )
 
 @CrewBase
@@ -27,7 +28,6 @@ class DeviceInfo():
             config=self.agents_config['analyst'],
             verbose=True,
             tools=[SystemInfo()],
-            memory=True,
             llm=llm,
             step_callback=lambda step: print(f"Agent Step: {step}"),
             allow_delegation=False,

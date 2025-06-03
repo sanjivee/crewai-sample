@@ -6,22 +6,24 @@ from datetime import datetime
 
 from device_info.crew import DeviceInfo
 
-# import logging
+import logging
 
-# logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 
 
 def run():
     """
     Run the crew.
     """
-    inputs = {
-        "query": "what is the battery percent?"
-    }
+    queries = [
+        { "query": "how much memory?"},
+        { "query": "whats the cpu?"},
+        {"query": "whats the battery percentage?"}
+    ]
     
     try:
-        result = DeviceInfo().crew().kickoff(inputs=inputs)
-        print(result, "res")
+        for query in queries:
+            result = DeviceInfo().crew().kickoff(inputs=query)
     except Exception as e:
         import traceback
         traceback.print_exc()

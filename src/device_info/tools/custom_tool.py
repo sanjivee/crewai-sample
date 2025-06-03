@@ -8,9 +8,10 @@ class SystemInfo(BaseTool):
     description: str = (
         "Returns current system information including battery percentage, memory, and CPU details"
     )
+    
 
     def _run(self) -> str:
-        return json.dumps({"battery percent": self.get_battery_percent(), 
+        return json.dumps({"battery_percent": self.get_battery_percent(), 
                             "memory":self.get_total_memory(), 
                             "cpu": self.get_cpu_info()
                         })
