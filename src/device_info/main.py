@@ -24,6 +24,8 @@ def run():
     try:
         for query in queries:
             result = DeviceInfo().crew().kickoff(inputs=query)
+            query['answer'] = result.raw
+        print("final answers:",queries)
     except Exception as e:
         import traceback
         traceback.print_exc()
